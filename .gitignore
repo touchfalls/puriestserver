@@ -1,0 +1,9 @@
+# игнорировать ядро сервера
+*.jar
+
+# папку с логами/плагинами/библиотеками
+logs/
+libraries/
+plugins/
+start.bat
+pureserver.zip
