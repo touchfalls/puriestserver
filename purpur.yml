@@ -35,14 +35,14 @@ settings:
   limit-armor: true
   tps-catchup: true
   disable-give-dropping: false
-  use-alternate-keepalive: false
+  use-alternate-keepalive: true # You can enable Purpur's alternate keepalive system so players with bad connection don't get timed out as often. Has known incompatibility with TCPShield.
   server-mod-name: Purpur
   broadcasts:
     advancement:
       only-broadcast-to-affected-player: false
     death:
       only-broadcast-to-affected-player: false
-  lagging-threshold: 19.0
+  lagging-threshold: 17.0 
   startup-commands: []
   command:
     rambar:
@@ -930,7 +930,7 @@ world-settings:
         attributes:
           max_health: 10.0
           scale: 1.0
-        disable-treasure-searching: false
+        disable-treasure-searching: false # Prevents dolphins from performing structure search similar to treasure maps
         takes-damage-from-water: false
         naturally-aggressive-to-players-chance: 0.0
         always-drop-exp: false
@@ -1295,7 +1295,7 @@ world-settings:
           only-babies: true
           chance: 0.05
           try-existing-chickens: true
-        aggressive-towards-villager-when-lagging: true
+        aggressive-towards-villager-when-lagging: false # Enabling this will cause zombies to stop targeting villagers if the server is below the tps threshold set with lagging-threshold in purpur.yml.
         mob-griefing-override: default
         takes-damage-from-water: false
         always-drop-exp: false
@@ -1578,7 +1578,7 @@ world-settings:
         always-drop-exp: false
         minimum-demand: 0
         lobotomize:
-          enabled: false
+          enabled: false # Lobotomized villagers are stripped from their AI and only restock their offers every so often. Enabling this will lobotomize villagers that are unable to pathfind to their destination. Freeing them should unlobotomize them.
           check-interval: 100
           wait-until-trade-locked: false
         display-trade-item: true
@@ -1586,8 +1586,8 @@ world-settings:
           radius: 0
           limit: 0
         search-radius:
-          acquire-poi: 48
-          nearest-bed-sensor: 48
+           acquire-poi: 16
+           nearest-bed-sensor: 16
       stray:
         ridable: false
         ridable-in-water: true
@@ -1765,7 +1765,7 @@ world-settings:
         exp-dropped-on-death:
           equation: expLevel * 7
           maximum: 100
-        teleport-if-outside-border: false
+        teleport-if-outside-border: true # Allows you to teleport the player to the world spawn if they happen to be outside of the world border. Helpful since the vanilla world border is bypassable and the damage it does to the player can be mitigated.
         teleport-on-nether-ceiling-damage: false
         totem-of-undying-works-in-inventory: false
         fix-stuck-in-portal: false
@@ -1798,7 +1798,7 @@ world-settings:
       disable-drops-on-cramming-death: false
       milk-cures-bad-omen: true
       trident-loyalty-void-return-height: 0.0
-      entities-can-use-portals: true
+      entities-can-use-portals: true # This option can disable portal usage of all entities besides the player. This prevents entities from loading chunks by changing worlds which is handled on the main thread. This has the side effect of entities not being able to go through portals.
       raid-cooldown-seconds: 0
       animal-breeding-cooldown-seconds: 0
       persistent-droppable-entity-display-names: true

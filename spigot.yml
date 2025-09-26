@@ -50,10 +50,10 @@ players:
 world-settings:
   default:
     below-zero-generation-in-existing-chunks: true
-    mob-spawn-range: 8
+    mob-spawn-range: 5 # Allows you to reduce the range (in chunks) of where mobs will spawn around the player. Depending on your server's gamemode and its playercount you might want to reduce this value along with bukkit.yml's spawn-limits. Setting this lower will make it feel as if there are more mobs around you. This should be lower than or equal to your simulation distance, and never larger than your hard despawn range / 16.
     end-portal-sound-radius: 0
     item-despawn-rate: 6000
-    nerf-spawner-mobs: false
+    nerf-spawner-mobs: false # You can make mobs spawned by a monster spawner have no AI. Nerfed mobs will do nothing. You can make them jump while in water by changing spawner-nerfed-mobs-should-jump to true in paper-world configuration.
     wither-spawn-sound-radius: 0
     arrow-despawn-rate: 1200
     trident-despawn-rate: 1200
@@ -84,13 +84,13 @@ world-settings:
       glowberry-modifier: 100
       pitcherplant-modifier: 100
     entity-activation-range:
-      animals: 32
-      monsters: 32
-      raiders: 64
-      misc: 16
-      water: 16
-      villagers: 32
-      flying-monsters: 32
+      animals: 16
+      monsters: 24
+      raiders: 48
+      misc: 8
+      water: 8
+      villagers: 16
+      flying-monsters: 48
       wake-up-inactive:
         animals-max-per-tick: 4
         animals-every: 1200
@@ -107,14 +107,13 @@ world-settings:
       villagers-work-immunity-after: 100
       villagers-work-immunity-for: 20
       villagers-active-for-panic: true
-      tick-inactive-villagers: true
+      tick-inactive-villagers: true # This allows you to control whether villagers should be ticked outside of the activation range. This will make villagers proceed as normal and ignore the activation range. Disabling this will help performance, but might be confusing for players in certain situations. This may cause issues with iron farms and trade restocking.
       ignore-spectators: false
     entity-tracking-range:
-      players: 128
-      animals: 96
-      monsters: 96
-      misc: 96
-      display: 128
+      players: 48
+      animals: 48
+      monsters: 48
+      misc: 32
       other: 64
     dragon-death-sound-radius: 0
     seed-village: 10387312
@@ -151,15 +150,15 @@ world-settings:
       sprint-multiplier: 0.1
       other-multiplier: 0.0
     ticks-per:
-      hopper-transfer: 8
-      hopper-check: 1
+      hopper-transfer: 8 # Time in ticks that hoppers will wait to move an item. Increasing this will help improve performance if there are a lot of hoppers on your server, but will break hopper-based clocks and possibly item sorting systems if set too high.
+      hopper-check: 8 # Time in ticks between hoppers checking for an item above them or in the inventory above them. Increasing this will help performance if there are a lot of hoppers on your server, but will break hopper-based clocks and item sorting systems relying on water streams.
     hopper-amount: 1
     hopper-can-load-chunks: false
     merge-radius:
-      exp: -1.0
-      item: 0.5
+      item: 3.5
+      exp: 4.0
     simulation-distance: default
-    view-distance: default
+    view-distance: default # This value overwrites server.properties one if not set to default. You should keep it default to have both simulation and view distance in one place for easier management.
     enable-zombie-pigmen-portal-spawns: true
     zombie-aggressive-towards-villager: true
     verbose: false
