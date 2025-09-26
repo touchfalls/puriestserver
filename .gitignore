@@ -7,3 +7,12 @@ libraries/
 plugins/
 start.bat
 pureserver.zip
+banned-players.json
+banned-ips.json
+whitelist.json
+version_history.json
+usercache.json
+permissions.yml
+ops.json
+help.yml
+commands.yml
